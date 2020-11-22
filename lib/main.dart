@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firestoresample/ui/card.dart';
+import 'package:firestoresample/ui/firebasedb.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -8,7 +9,7 @@ void main() async {
   await Firebase.initializeApp();
 
   runApp(new MaterialApp(
-    home: new MyHomePage(),
+    home: new SecondPage(),
   ));
 }
 
@@ -41,6 +42,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("My Firebase Store"),
         centerTitle: true,
         backgroundColor: Colors.deepOrange,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.ac_unit),
+            onPressed: () {
+              var route = MaterialPageRoute(builder: (_) {
+                return new SecondPage();
+              });
+              Navigator.pushReplacement(context, route);
+            },
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
